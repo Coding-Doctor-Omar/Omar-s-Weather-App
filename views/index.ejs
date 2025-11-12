@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("header.ejs") %>
+  <div class="px-4 py-5 my-5 text-center">
+    <% if (!locals.lat && !locals.lon) { %>
+    <h1 class="display-5 fw-bold text-body-emphasis">
+      Welcome to Omar's Weather App
+    </h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">
+        Search for your location in the search bar above using the latitude and
+        longitude.
+      </p>
+    </div>
+    <% } else if (lat === "error" || lon === "error") { %>
+    <div class="px-4 py-5 my-5 text-center">
+      <h1 class="display-5 fw-bold text-body-emphasis">An error occured. Please try again later.</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">
+          Search for your location in the search bar above using the latitude and
+          longitude.
+        </p>
+      </div>
+    </div>
+    <% } else { %>
+    <div class="px-4 py-5 my-5 text-center">
+      <img
+        class="d-block mx-auto mb-4"
+        src="<%= imageURL %>"
+        alt=""
+        width="100"
+        height="100"
+      />
+      <h1 class="display-5 fw-bold text-body-emphasis"><%= condition %>, <%= temp %>°C</h1>
+      <div class="col-lg-6 mx-auto">
+        <h4><em><%= location %></em></h4>
+        <br>
+        <p class="lead mb-4">
+          Feels Like: <%= feel %>°C
+        </p>
+        <p class="lead mb-4">
+          Humidity: <%= humidity %>%
+        </p>
+        <p class="lead mb-4">
+          Wind Speed: <%= windSpeed %> kph
+        </p>
+        <p class="lead mb-4">
+          Wind Direction: <%= feel %>°
+        </p>
+      </div>
+    </div>
+    <% } %>
+  </div>
+  <div class="container"><hr /></div>
+  <!-- </body> -->
+  <%- include("footer.ejs") %>
+</html>
